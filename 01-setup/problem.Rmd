@@ -1,0 +1,147 @@
+---
+title: "Assignment 01: Set up"
+author: Your name
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  bookdown::pdf_document2:
+    toc: false
+    number_sections: true
+    latex_engine: pdflatex
+    keep_tex: false
+    fig_caption: true
+fontfamily: mathpazo
+fontsize: 11pt
+---
+
+# Overview
+
+## Purpose {-}
+
+The purpose of this assignment is twofold.
+
+1. To check if your computation environment is up and running; and
+2. To become familiar with GitHub workflow
+
+## Goal {-}
+
+- Clone the assignment repository
+- Make a working branch
+- Replicate the present PDF file with your name on the author line
+- Commit the change and send a Pull Request
+ 
+# Prerequisite
+
+## GitHub Account {-}
+
+Make a github account if you don't have one.
+
+- [GitHub](https://github.com/)
+
+## Softwares {-}
+
+Please install the following softwares (they are free)
+
+- R 
+- RStudio
+- LaTeX system ([texlive for Windows/Linux](https://www.tug.org/texlive/), 
+  [MacTeX for macOS](https://tug.org/mactex/))
+- [GitHub Desktop](https://desktop.github.com/)
+
+When you finish installation, follow the instructions.
+
+# Instructions
+
+## Step 1. Clone the assignment repository {-}
+
+Click the invitation link. Your assignment repository is automatically created. 
+Click "Clone or download" and then click "Open in Desktop". Then GitHub Desktop
+opens.
+
+## Step 2. Make a new brach with a descriptive name {-}
+
+Do not start to work on the problem yet! Make a new branch with a descriptive name. 
+Let's say, "workbench". 
+
+## Step 3. Open the assignment directory by RStudio {-}
+
+Then open the folder in which the repository resides, by 
+
+- [Windows] Clicking the gear button and then "Open in Explorer"
+- [Mac] Right-Clicking (Two-finger click) on the repository name in the left area, 
+  and then clicking "Open in Finder"
+
+Double click "*.Rproj" file. RStudio should open. 
+
+## Step 4. Open this assignment file {-}
+
+Look at the "Files" pane on RStudio. Open "01-setup" and click "problem.Rmd". 
+Now you see the source file of this instruction manual. 
+
+
+## Step 5. Knit {-}
+
+Click "knit" button above the editor pane. If this is the first time you 
+try to knit Rmd to PDF you are prompted to install and/or update dependencies. 
+Success?
+
+Now, do you see the rendered PDF file? Congratulations, you are good to go!
+
+If you don't see the PDF, hang in there. Since this is typical, don't 
+be ashamed of having caused an error. As you learn how to code, you'll 
+read even more error messages (not less!!).
+
+What you need to do is read the error message carefully. Try to figure out 
+what is missing.After a careful reading of error message, you sometimes can 
+fix it yourself. But not always. If you still don't know what to do, copy 
+the error message and ask google about that. If you still can't fix,
+ask the TA or lecturer.
+
+Your problem was probably caused by a missing packages? As a matter of fact, 
+this Rmd depends on not-preinstalled package called "tidyverse". 
+Please install this.
+
+```{r, eval=FALSE}
+install.packages("bookdown")
+install.packages("tidyverse")
+```
+
+`install.packages("package_name")` is a typical way of package installation on R.
+
+## Step 6. Make modification {-}
+
+You may want to modify the source because the output PDF file has strange author 
+name on it: "Your name". Find the way to change the author name. Put your name there.
+
+And save the file and knit again.
+
+
+
+# Example text
+
+## Data analysis
+
+```{r}
+library(tidyverse)
+(iris_tbl <- as_data_frame(iris))
+```
+
+The following code produce Figure \@ref(fig:iris).^[See http://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables/38884378#38884378]
+
+```{r iris, fig.cap="Iris Data", fig.align='center', fig.width=4, fig.height=3}
+ggplot(iris_tbl) + 
+  geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species)) 
+```
+
+## Matheamtical equation
+
+Using LaTeX syntax, you can produce mathematical equations: 
+
+\begin{equation}
+f(x) = f(0) + \int_0^x f'(y) dy.  (\#eq:ftc)
+\end{equation}
+
+
+Cross reference works like Equation \@ref(eq:ftc) but the syntactic rule is different from LaTeX. 
+See [https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations) for more detail.
+
+
